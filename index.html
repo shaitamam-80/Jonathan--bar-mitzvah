@@ -323,6 +323,231 @@
             color: white;
         }
 
+        .btn-rsvp {
+            background: linear-gradient(135deg, var(--primary-color), #1a3d6e);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 15px rgba(15, 43, 78, 0.3);
+        }
+
+        .btn-rsvp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(15, 43, 78, 0.4);
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 400px;
+            width: 100%;
+            transform: translateY(20px) scale(0.95);
+            transition: transform 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0) scale(1);
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .modal-header h2 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .modal-header p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.2s;
+            padding: 5px;
+        }
+
+        .modal-close:hover {
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 0.95rem;
+        }
+
+        .form-group label .required {
+            color: #e74c3c;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            direction: rtl;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--accent-color), #b8963c);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .success-message {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .success-message .checkmark {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            animation: scaleIn 0.5s ease;
+        }
+
+        .success-message .checkmark svg {
+            width: 40px;
+            height: 40px;
+            color: white;
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+
+        .success-message h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .success-message p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .error-message {
+            background: #fee;
+            color: #c00;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        /* Mobile modal adjustments */
+        @media (max-width: 480px) {
+            .modal {
+                padding: 20px;
+                border-radius: 16px;
+                margin: 10px;
+            }
+
+            .modal-header h2 {
+                font-size: 1.3rem;
+            }
+
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                padding: 10px 12px;
+            }
+
+            .btn-submit {
+                padding: 12px;
+                font-size: 1rem;
+            }
+        }
+
         /* Touch-friendly interactions */
         @media (hover: none) {
             .btn-calendar:active {
@@ -605,7 +830,7 @@
                 ניווט לבית הכנסת
             </a>
 
-            <a href="https://wa.me/?text=%D7%90%D7%AA%D7%9D%20%D7%9E%D7%95%D7%96%D7%9E%D7%A0%D7%99%D7%9D%20%D7%9C%D7%91%D7%A8%20%D7%9E%D7%A6%D7%95%D7%95%D7%94%20%D7%A9%D7%9C%20%D7%99%D7%94%D7%95%D7%A0%D7%AA%D7%9F%20%D7%AA%D7%9E%D7%9D!%20%F0%9F%8E%89%0A%D7%99%D7%95%D7%9D%20%D7%A9%D7%A0%D7%99%2C%205.1.2026%20%D7%91%D7%A9%D7%A2%D7%94%2009%3A30%0A%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D%3A%20https%3A%2F%2Fjonathan-bar-mitzvah.vercel.app" target="_blank" class="btn btn-whatsapp">
+            <a href="https://wa.me/?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%9C%D7%9B%D7%95%D7%9C%D7%9D!%20%F0%9F%8E%89%0A%0A%D7%91%D7%A9%D7%9E%D7%97%D7%94%20%D7%A8%D7%91%D7%94%20%D7%90%D7%A0%D7%95%20%D7%9E%D7%96%D7%9E%D7%99%D7%A0%D7%99%D7%9D%20%D7%90%D7%AA%D7%9B%D7%9D%20%D7%9C%D7%97%D7%92%D7%95%D7%92%20%D7%90%D7%99%D7%AA%D7%A0%D7%95%20%D7%90%D7%AA%20%D7%A2%D7%9C%D7%99%D7%99%D7%AA%20%D7%91%D7%A8%20%D7%94%D7%9E%D7%A6%D7%95%D7%95%D7%94%20%D7%A9%D7%9C%20%D7%91%D7%A0%D7%A0%D7%95%20%D7%94%D7%99%D7%A7%D7%A8%0A%0A%E2%9C%A8%20%D7%AA%D7%9E%D7%9D%20%D7%99%D7%94%D7%95%D7%A0%D7%AA%D7%9F%20%E2%9C%A8%0A%0A%F0%9F%93%85%20%D7%99%D7%95%D7%9D%20%D7%A9%D7%A0%D7%99%2C%205.1.2026%0A%F0%9F%95%A4%20%D7%91%D7%A9%D7%A2%D7%94%209%3A30%20%D7%91%D7%91%D7%95%D7%A7%D7%A8%0A%F0%9F%8F%9B%20%D7%91%D7%99%D7%AA%20%D7%9B%D7%A0%D7%A1%D7%AA%20%D7%A0%D7%AA%D7%99%D7%91%20%D7%94%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%A2%D7%95%D7%9E%D7%A8%0A%0A%F0%9F%93%8D%20%D7%9C%D7%A0%D7%99%D7%95%D7%95%D7%98%3A%20https%3A%2F%2Fmaps.app.goo.gl%2FJEDx4bYFFbysJs9U9%0A%0A%D7%A0%D7%A9%D7%9E%D7%97%20%D7%9E%D7%90%D7%95%D7%93%20%D7%9C%D7%A8%D7%90%D7%95%D7%AA%D7%9B%D7%9D%20%D7%A9%D7%95%D7%AA%D7%A4%D7%99%D7%9D%20%D7%9C%D7%A9%D7%9E%D7%97%D7%AA%D7%A0%D7%95!" target="_blank" class="btn btn-whatsapp">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                 </svg>
@@ -618,10 +843,79 @@
                 </svg>
                 שמירת ההזמנה
             </button>
+
+            <button onclick="openRsvpModal()" class="btn btn-rsvp">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                אישור הגעה
+            </button>
         </div>
 
         <div class="footer animate-in">
             נשמח לראותכם! משפחת תמם
+        </div>
+    </div>
+
+    <!-- RSVP Modal -->
+    <div class="modal-overlay" id="rsvpModal" onclick="closeRsvpModal(event)">
+        <div class="modal" onclick="event.stopPropagation()">
+            <div id="rsvpForm">
+                <div class="modal-header">
+                    <h2>אישור הגעה</h2>
+                    <p>נשמח לדעת שאתם מגיעים!</p>
+                </div>
+
+                <div id="formError" class="error-message"></div>
+
+                <form onsubmit="submitRsvp(event)">
+                    <div class="form-group">
+                        <label>שם מלא <span class="required">*</span></label>
+                        <input type="text" id="rsvpName" required placeholder="הזינו את שמכם">
+                    </div>
+
+                    <div class="form-group">
+                        <label>מספר אורחים</label>
+                        <select id="rsvpGuests">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>טלפון</label>
+                        <input type="tel" id="rsvpPhone" placeholder="050-0000000">
+                    </div>
+
+                    <div class="form-group">
+                        <label>הערות</label>
+                        <textarea id="rsvpNotes" placeholder="הערות נוספות (אופציונלי)"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit" id="submitBtn">
+                        שליחת אישור
+                    </button>
+                </form>
+            </div>
+
+            <div id="rsvpSuccess" class="success-message" style="display: none;">
+                <div class="checkmark">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                </div>
+                <h3>תודה רבה!</h3>
+                <p>אישור ההגעה נקלט בהצלחה.<br>נשמח לראותכם באירוע!</p>
+                <button onclick="closeRsvpModal()" class="btn-submit" style="margin-top: 20px;">סגירה</button>
+            </div>
         </div>
     </div>
 
@@ -766,6 +1060,89 @@
 
         // Initialize sparkles
         window.addEventListener('load', createSparkles);
+
+        // RSVP Modal Functions
+        const SUPABASE_URL = 'https://malfisvaqugglieazyuq.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1hbGZpc3ZhcXVnZ2xpZWF6eXVxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU1NTYwOTIsImV4cCI6MjA4MTEzMjA5Mn0.7QD3UyQIr72MYP2pIIgRwptQkGM7BgJZF2J5QI05ASM';
+
+        function openRsvpModal() {
+            document.getElementById('rsvpModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeRsvpModal(event) {
+            if (event && event.target !== event.currentTarget) return;
+            document.getElementById('rsvpModal').classList.remove('active');
+            document.body.style.overflow = '';
+            // Reset form after closing
+            setTimeout(() => {
+                document.getElementById('rsvpForm').style.display = 'block';
+                document.getElementById('rsvpSuccess').style.display = 'none';
+                document.getElementById('formError').style.display = 'none';
+                document.querySelector('#rsvpForm form').reset();
+            }, 300);
+        }
+
+        async function submitRsvp(event) {
+            event.preventDefault();
+
+            const submitBtn = document.getElementById('submitBtn');
+            const errorDiv = document.getElementById('formError');
+
+            const name = document.getElementById('rsvpName').value.trim();
+            const guests = parseInt(document.getElementById('rsvpGuests').value);
+            const phone = document.getElementById('rsvpPhone').value.trim();
+            const notes = document.getElementById('rsvpNotes').value.trim();
+
+            if (!name) {
+                errorDiv.textContent = 'נא להזין שם מלא';
+                errorDiv.style.display = 'block';
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'שולח...';
+            errorDiv.style.display = 'none';
+
+            try {
+                const response = await fetch(`${SUPABASE_URL}/rest/v1/rsvp`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'apikey': SUPABASE_KEY,
+                        'Authorization': `Bearer ${SUPABASE_KEY}`,
+                        'Prefer': 'return=minimal'
+                    },
+                    body: JSON.stringify({
+                        name: name,
+                        guests: guests,
+                        phone: phone || null,
+                        notes: notes || null
+                    })
+                });
+
+                if (response.ok) {
+                    // Show success message
+                    document.getElementById('rsvpForm').style.display = 'none';
+                    document.getElementById('rsvpSuccess').style.display = 'block';
+                } else {
+                    throw new Error('Failed to submit');
+                }
+            } catch (error) {
+                errorDiv.textContent = 'אירעה שגיאה. אנא נסו שנית.';
+                errorDiv.style.display = 'block';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'שליחת אישור';
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeRsvpModal();
+            }
+        });
     </script>
 </body>
 </html>
