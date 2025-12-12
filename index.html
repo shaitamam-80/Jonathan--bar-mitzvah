@@ -55,6 +55,23 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        @keyframes confettiFall {
+            0% {
+                top: -20px;
+                opacity: 1;
+                transform: translateX(0) rotate(0deg);
+            }
+            100% {
+                top: 100vh;
+                opacity: 0;
+                transform: translateX(calc(var(--drift, 50px) - 25px)) rotate(720deg);
+            }
+        }
+
+        .confetti {
+            --drift: calc(100px * var(--random, 0.5));
+        }
+
         header {
             text-align: center;
             margin-bottom: 20px;
@@ -508,6 +525,53 @@
 
         setInterval(updateCountdown, 1000);
         updateCountdown();
+
+        // Confetti effect
+        function createConfetti() {
+            const colors = ['#d4af37', '#0f2b4e', '#ffffff', '#f0d78c', '#1e4a7a', '#e8c64a'];
+            const confettiCount = 150;
+            const container = document.body;
+
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+
+                // Random properties
+                const size = Math.random() * 10 + 5;
+                const left = Math.random() * 100;
+                const delay = Math.random() * 3;
+                const duration = Math.random() * 3 + 2;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const rotation = Math.random() * 360;
+
+                confetti.style.cssText = `
+                    position: fixed;
+                    width: ${size}px;
+                    height: ${size * 0.6}px;
+                    background: ${color};
+                    left: ${left}%;
+                    top: -20px;
+                    opacity: 1;
+                    transform: rotate(${rotation}deg);
+                    animation: confettiFall ${duration}s ease-out ${delay}s forwards;
+                    pointer-events: none;
+                    z-index: 1000;
+                    border-radius: 2px;
+                `;
+
+                container.appendChild(confetti);
+
+                // Remove confetti after animation
+                setTimeout(() => {
+                    confetti.remove();
+                }, (duration + delay) * 1000 + 100);
+            }
+        }
+
+        // Start confetti on page load
+        window.addEventListener('load', () => {
+            setTimeout(createConfetti, 300);
+        });
     </script>
 </body>
 </html>
